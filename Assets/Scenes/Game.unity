@@ -1416,6 +1416,21 @@ Prefab:
       propertyPath: targetBoundaryHolder
       value: 
       objectReference: {fileID: 266504264}
+    - target: {fileID: 212076023977765748, guid: 8e71ccaf71afdd04f9a28ec4ac78ccd2,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.09531862
+      objectReference: {fileID: 0}
+    - target: {fileID: 212076023977765748, guid: 8e71ccaf71afdd04f9a28ec4ac78ccd2,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.85490197
+      objectReference: {fileID: 0}
+    - target: {fileID: 212076023977765748, guid: 8e71ccaf71afdd04f9a28ec4ac78ccd2,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.9622642
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e71ccaf71afdd04f9a28ec4ac78ccd2, type: 2}
   m_IsPrefabParent: 0
