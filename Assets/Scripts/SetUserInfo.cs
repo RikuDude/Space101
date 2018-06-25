@@ -8,8 +8,8 @@ public class SetUserInfo : MonoBehaviour {
 
     private void OnEnable()
     {
-        Text nameBox = GameObject.Find("Text_PlayerInfo").GetComponent<Text>(); 
-        nameBox.text = User.UserName;
+        Text nameBox = GameObject.Find("Text_PlayerInfo").GetComponent<Text>();
+        nameBox.text = User.GetUserDataMessage();
         
     }
     // Use this for initialization

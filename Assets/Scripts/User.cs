@@ -69,11 +69,11 @@
     {
         if (NewUser)
         {
-            return string.Format("Welcome to Space 101 {0} ", UserName, BestScore, TotalPoints);
+            return string.Format("Welcome to Space 101 {0}  ", UserName);
         }
         else
         {
-            return string.Format("Welcome back {0} \n your Best Score is {1} and your Total Points are {2}", UserName, BestScore, TotalPoints);
+            return string.Format("Welcome back {0}  your Best Score is {1}\n and your Total Points are {2}", UserName, BestScore, TotalPoints);
         }
         
     }
