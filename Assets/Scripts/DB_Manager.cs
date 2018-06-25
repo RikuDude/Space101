@@ -28,7 +28,7 @@ public class DB_Manager : MonoBehaviour {
     
     public void makePlayer(InputField userName)
     {
-        
+        User.UserName = userName.text;
             InsertUser(userName.text, 0, 0);
         
         
