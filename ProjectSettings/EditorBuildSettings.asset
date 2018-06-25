@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BestScoreList.unity
     guid: a8b07771d83c4a443a0e67a7e1351e35
+  - enabled: 1
+    path: Assets/Scenes/Player_Game_Info.unity
+    guid: 4859557b750483d47af9838e1c36de31
   m_configObjects: {}
