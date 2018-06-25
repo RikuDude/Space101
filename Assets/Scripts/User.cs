@@ -3,6 +3,7 @@
     private static string userName;
     private static string bestScore;
     private static string totalPoints;
+    private static bool newUser;
 
     public static string UserName
     {
@@ -43,17 +44,30 @@
         }
     }
 
+    public static bool NewUser
+    {
+        get
+        {
+            return newUser;
+        }
 
-    public static void SetUserData(string username, string bestScore = "0", string totalPoints = "0")
+        set
+        {
+            newUser = value;
+        }
+    }
+
+    public static void SetUserData(string username,bool newuser, string bestScore = "0", string totalPoints = "0")
     {
         UserName = username;
+        NewUser = newuser;
         BestScore = bestScore;
         TotalPoints = totalPoints;
     }
 
-    public static string GetUserDataMessage(bool newPlayer)
+    public static string GetUserDataMessage()
     {
-        if (newPlayer)
+        if (NewUser)
         {
             return string.Format("Welcome to Space 101 {0} ", UserName, BestScore, TotalPoints);
         }

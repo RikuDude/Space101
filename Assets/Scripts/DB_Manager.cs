@@ -19,8 +19,6 @@ public class DB_Manager : MonoBehaviour
 
         connectString = "URI=file:" + Application.dataPath + "/spaceDB.sqlite";
 
-
-
     }
 
     // Update is called once per frame
@@ -31,7 +29,7 @@ public class DB_Manager : MonoBehaviour
 
     public void makePlayer(InputField userName)
     {
-        
+
         InsertUser(userName.text, 0, 0);
     }
     private void InsertUser(string name, int score = 0, int totalPoints = 0)
@@ -68,7 +66,7 @@ public class DB_Manager : MonoBehaviour
                     {
                         if (reader.GetString(1) != "")
                         {
-                            User.SetUserData(reader.GetString(0), reader.GetString(1), reader.GetString(2));
+                            User.SetUserData(reader.GetString(0), false, reader.GetString(1), reader.GetString(2));
                             return true;
                         }
                     }
@@ -79,12 +77,12 @@ public class DB_Manager : MonoBehaviour
                 }
             }
 
-            User.SetUserData(name);
+            User.SetUserData(name, true);
             return false;
         }
     }
 
-   
+
     public void FillListView(Text Listtxt)
     {
         GetScores();
