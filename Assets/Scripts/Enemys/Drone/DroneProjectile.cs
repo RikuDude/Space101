@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FriendlyProjectile : MonoBehaviour {
+public class DroneProjectile : MonoBehaviour {
 
     public float damage = 5f;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         
-        if(!collision.CompareTag("Player") && !collision.CompareTag("Projectile"))
+        if (!collision.CompareTag("Enemy") && !collision.CompareTag("Projectile"))
         {
-            
-            Target target = collision.transform.GetComponent<Target>();
+
+            PlayerTarget target = collision.transform.GetComponent<PlayerTarget>();
 
             if (target != null)
             {
@@ -23,7 +22,6 @@ public class FriendlyProjectile : MonoBehaviour {
             
             Destroy(this.gameObject);
         }
-       
+        
     }
-    
 }
