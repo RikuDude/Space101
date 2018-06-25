@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class ImpactWithPlayer : MonoBehaviour {
 
@@ -30,5 +32,11 @@ public class ImpactWithPlayer : MonoBehaviour {
         return normalizedCollisionVector;
 
     }
+
+    private void doSomethingOnSceneLoad()
+    {
+        SceneManager.sceneLo
+    }
+    
 
 }
