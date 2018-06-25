@@ -32,11 +32,6 @@ public class ImpactWithPlayer : MonoBehaviour {
         return normalizedCollisionVector;
 
     }
-
-    private void doSomethingOnSceneLoad()
-    {
-        SceneManager.sceneLo
-    }
     
 
 }
