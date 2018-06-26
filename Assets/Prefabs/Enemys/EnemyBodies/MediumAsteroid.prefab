@@ -103,7 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09c34ad8ea13374a91bd9c558949315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10000
   targetBoundaryHolder: {fileID: 0}
 --- !u!114 &114622346639339028
 MonoBehaviour:
