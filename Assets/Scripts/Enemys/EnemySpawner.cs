@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour {
 
@@ -12,11 +13,12 @@ public class EnemySpawner : MonoBehaviour {
 
     public List<GameObject> listOfAllEnemyTypes;
 
+    private Text nextWaveClockBoard;
 
 
 	// Use this for initialization
 	void Start () {
-		
+        nextWaveClockBoard = GameObject.Find("Clock").transform.GetChild(1).transform.GetChild(0).transform.GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
@@ -72,8 +74,11 @@ public class EnemySpawner : MonoBehaviour {
 
                 break;
         }
-
         return randomizedSpawnPoint;
+    }
+
+    private void updateNextWaveClock()
+    {
 
     }
 }
