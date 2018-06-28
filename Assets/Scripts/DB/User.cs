@@ -4,6 +4,7 @@
     private static string bestScore = "0";
     private static string score = "0";
     private static bool newUser;
+    private static int difficulty = 0;
 
     public static string UserName
     {
@@ -57,7 +58,20 @@
         }
     }
 
-    public static void SetUserData(string username,bool newuser, string bestScore = "0", string score = "0")
+    public static int Difficulty
+    {
+        get
+        {
+            return difficulty;
+        }
+
+        set
+        {
+            difficulty = value;
+        }
+    }
+
+    public static void SetUserData(string username, bool newuser, string bestScore = "0", string score = "0")
     {
         UserName = username;
         NewUser = newuser;
@@ -73,9 +87,9 @@
         }
         else
         {
-           
+
             return string.Format("Welcome back {0}  ", UserName, BestScore, Score);
         }
-        
+
     }
 }

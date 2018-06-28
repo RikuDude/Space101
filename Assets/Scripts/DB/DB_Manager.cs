@@ -12,8 +12,8 @@ public class DB_Manager : MonoBehaviour
 
     //ConnectString
     private string connectString;
-    
-  
+
+
     // Use this for initialization
     void Start()
     {
@@ -31,21 +31,20 @@ public class DB_Manager : MonoBehaviour
     public void makePlayer(InputField userName)
     {
 
-        if (userName.text ==string.Empty)
+        if (userName.text == string.Empty)
         {
             Text nameBox = GameObject.Find("ErrorText").GetComponent<Text>();
             nameBox.text = "Username not valid!!";
-             
+
         }
         else
         {
-            InsertUser(userName.text, 0, 0);
-            //newGameBtnClick.ChangeScene("Player_Game_Info");
+            InsertUser(userName.text, 0);
             SceneManager.LoadScene("Player_Game_Info");
         }
-       
+
     }
-    private void InsertUser(string name, int score = 0, int totalPoints = 0)
+    private void InsertUser(string name, int score = 0)
     {
         if (!UserExist(name))
         {
@@ -55,7 +54,7 @@ public class DB_Manager : MonoBehaviour
                 dbConnection.Open();
                 using (IDbCommand dbCmd = dbConnection.CreateCommand())
                 {
-                    string sqlQuery = String.Format("Insert INTO space_users(name,best_score,total_points) VALUES(\"{0}\",\"{1}\",\"{2}\")", name, score, totalPoints);
+                    string sqlQuery = String.Format("Insert INTO space_users(name,best_score,total_points) VALUES(\"{0}\",\"{1}\")", name, score);
                     dbCmd.CommandText = sqlQuery;
                     dbCmd.ExecuteScalar();
                     dbCmd.Connection.Close();
@@ -96,13 +95,13 @@ public class DB_Manager : MonoBehaviour
                 return false;
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
             Text nameBox = GameObject.Find("ErrorText").GetComponent<Text>();
-            nameBox.text = "DB doesnt exist!!";
+            nameBox.text = "DB doesn't exist!! ";
             return false;
         }
-       
+
     }
 
 
@@ -118,7 +117,7 @@ public class DB_Manager : MonoBehaviour
     //{       string connectString = "URI=file:" + Application.dataPath + "/spaceDB.sqlite";
 
     //         bestScores.Clear();
-        
+
     //    using (IDbConnection dbConnection = new SqliteConnection(connectString))
     //    {
     //        dbConnection.Open();
@@ -131,11 +130,11 @@ public class DB_Manager : MonoBehaviour
     //            {
     //                while (reader.Read())
     //                {
-                       
+
     //                    bestScores.Add(reader.GetString(0) + "  " + reader.GetString(1));
     //                    //Debug.Log(reader.GetString(0) + " " + reader.GetString(1));
     //                }
-                    
+
     //                dbConnection.Close();
     //                reader.Close();
     //                return bestScores;

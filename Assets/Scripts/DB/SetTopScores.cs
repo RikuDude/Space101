@@ -8,29 +8,21 @@ using Mono.Data.Sqlite;
 
 public class SetTopScores : MonoBehaviour
 {
-    
-    
     Text nameBox;
-  
-
     // Use this for initialization
     void Start()
     {
-
-
         SetScoreList();
-
-
     }
 
     private void SetScoreList()
     {
 
-    
-     string connectString = "URI=file:" + Application.dataPath + "/spaceDB.sqlite";
-     
-     string objectText = "playerNametxt";
-     string tempTextObjekt = "";
+
+        string connectString = "URI=file:" + Application.dataPath + "/spaceDB.sqlite";
+
+        string objectText = "playerNametxt";
+        string tempTextObjekt = "";
 
         using (IDbConnection dbConnection = new SqliteConnection(connectString))
         {
@@ -43,7 +35,7 @@ public class SetTopScores : MonoBehaviour
                 using (IDataReader reader = dbCmd.ExecuteReader())
                 {
                     int i = 1;
-                    while ((reader.Read()) && (i<6))
+                    while ((reader.Read()) && (i < 6))
                     {
                         tempTextObjekt = Convert.ToString(objectText + i.ToString());
 
@@ -61,10 +53,10 @@ public class SetTopScores : MonoBehaviour
                 }
             }
         }
-       
 
-       
-        
+
+
+
     }
 
     // Update is called once per frame
