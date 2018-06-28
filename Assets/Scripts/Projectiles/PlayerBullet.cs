@@ -23,4 +23,6 @@ public class PlayerBullet : MonoBehaviour {
     {
         this.speed = speed;
     }
+
+    
 }

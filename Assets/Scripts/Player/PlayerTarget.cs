@@ -39,6 +39,8 @@ public class PlayerTarget : MonoBehaviour {
 
     private void Die()
     {
+        Debug.Log("Username: " + User.UserName);
+        User.Score = "" + this.gameObject.transform.GetComponent<PlayerController>().getScore();
         Destroy(this.gameObject);
     }
 

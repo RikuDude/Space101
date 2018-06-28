@@ -1,8 +1,8 @@
 ﻿public static class User
 {
     private static string userName;
-    private static string bestScore;
-    private static string totalPoints;
+    private static string bestScore = "0";
+    private static string score = "0";
     private static bool newUser;
 
     public static string UserName
@@ -31,16 +31,16 @@
         }
     }
 
-    public static string TotalPoints
+    public static string Score
     {
         get
         {
-            return totalPoints;
+            return score;
         }
 
         set
         {
-            totalPoints = value;
+            score = value;
         }
     }
 
@@ -57,12 +57,12 @@
         }
     }
 
-    public static void SetUserData(string username,bool newuser, string bestScore = "0", string totalPoints = "0")
+    public static void SetUserData(string username,bool newuser, string bestScore = "0", string score = "0")
     {
         UserName = username;
         NewUser = newuser;
         BestScore = bestScore;
-        TotalPoints = totalPoints;
+        Score = score;
     }
 
     public static string GetUserDataMessage()
@@ -73,7 +73,7 @@
         }
         else
         {
-            return string.Format("Welcome back {0}  your Best Score is {1}\n and your Total Points are {2}", UserName, BestScore, TotalPoints);
+            return string.Format("Welcome back {0}  your Best Score is {1}\n and your Total Points are {2}", UserName, BestScore, Score);
         }
         
     }

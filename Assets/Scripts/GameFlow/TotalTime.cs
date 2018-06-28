@@ -13,6 +13,5 @@ public class TotalTime : MonoBehaviour {
 	
 	void Update () {
         totalTimeBoard.text = "" + (int)(Time.time % 6000);
-        Debug.Log("Logging Time to Clock");
 	}
 }

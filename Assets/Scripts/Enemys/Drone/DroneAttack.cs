@@ -15,7 +15,7 @@ public class DroneAttack : MonoBehaviour {
     private float timeUntilAquieringNextTarget = 5f;
     private float nextTimeToAquireNextTarget = 0;
 
-    public float fireRate = 5f;
+    public float fireRate = 3f;
     private float nextTimeToFire = 0;
 
     void Start () {
