@@ -79,7 +79,7 @@ public class DroneAttack : MonoBehaviour {
 
     private bool isOnScreen()
     {
-        if (this.transform.position.y < playerBoundary.GetChild(0).transform.position.y && this.transform.position.y > playerBoundary.GetChild(1).transform.position.y && this.transform.position.x > playerBoundary.GetChild(2).transform.position.x && this.transform.position.y < playerBoundary.GetChild(3).transform.position.x)
+        if (this.transform.position.y < playerBoundary.GetChild(0).transform.position.y && this.transform.position.y > playerBoundary.GetChild(1).transform.position.y && this.transform.position.x > playerBoundary.GetChild(2).transform.position.x && this.transform.position.x < playerBoundary.GetChild(3).transform.position.x)
         {
             return true;
         }
