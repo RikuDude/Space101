@@ -73,11 +73,8 @@
         }
         else
         {
-<<<<<<< HEAD:Assets/Scripts/User.cs
-            return string.Format("Welcome back {0}  your Best Score is {1}\n and your Total Points are {2}", UserName, BestScore, Score);
-=======
-            return string.Format("Welcome back {0}  ", UserName, BestScore, TotalPoints);
->>>>>>> ca764b4a14d4dac2e12acc52ffd0d0a9b2e6dd02:Assets/Scripts/DB/User.cs
+           
+            return string.Format("Welcome back {0}  ", UserName, BestScore, Score);
         }
         
     }
