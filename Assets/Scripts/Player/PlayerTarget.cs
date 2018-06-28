@@ -5,12 +5,16 @@ using UnityEngine.UI;
 
 public class PlayerTarget : MonoBehaviour {
     
-    public Image ImgHealthBar;
+    private Image ImgHealthBar;
 
     private float maxHealth = 50f;
     private float currentHealth = 50f;
 
-
+    private void Start()
+    {
+        ImgHealthBar = GameObject.Find("Player1HUD").transform.GetChild(0).transform.GetChild(1).GetComponent<Image>();
+    }
+    
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
@@ -43,4 +47,6 @@ public class PlayerTarget : MonoBehaviour {
     {
         ImgHealthBar.fillAmount = currentHealth / maxHealth;
     }
+
+    
 }
