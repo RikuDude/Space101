@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed;
     protected Rigidbody2D myBody;
     protected CircleCollider2D myCollider;
+
+    private float score = 0f;
+    private Text scoreBoard;
 
 
     protected float rx = 0;
@@ -36,7 +40,9 @@ public class PlayerController : MonoBehaviour
 
         playerBoundary = new Boundary(BoundaryHolder.GetChild(0).position.y - actualRadiusOfSpaceship, BoundaryHolder.GetChild(1).position.y + actualRadiusOfSpaceship, BoundaryHolder.GetChild(2).position.x + actualRadiusOfSpaceship, BoundaryHolder.GetChild(3).position.x - actualRadiusOfSpaceship);
 
-        Debug.Log("radius: " + myCollider.radius);
+        this.scoreBoard = GameObject.Find("Player1HUD").transform.GetChild(1).transform.GetChild(1).transform.GetChild(0).GetComponent<Text>();
+        this.updateScoreBoard();
+
     }
 
    
@@ -96,10 +102,25 @@ public class PlayerController : MonoBehaviour
 
     public void shootBullet()
     {
-        Instantiate(playerBullet, transform.position, transform.rotation);
-        Debug.Log("Laser Fired");
+        GameObject bullet = Instantiate(playerBullet, transform.position, transform.rotation);
+        bullet.transform.GetComponent<FriendlyProjectile>().setShootingPlayer(this.gameObject);
     }
 
+
+    public void addScore(float amount)
+    {
+        this.score += amount;
+    }
+
+    public float getScore()
+    {
+        return this.score;
+    }
+
+    public void updateScoreBoard()
+    {
+        this.scoreBoard.text = "" + this.score;
+    }
 
     struct Boundary
     {
