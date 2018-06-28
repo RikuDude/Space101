@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class newGameBtnClick : MonoBehaviour {
+public class newGameBtnClick : MonoBehaviour
+{
 
-public void ChangeScene(string changedtoScene)
+    public void ChangeScene(string changedtoScene)
     {
         SceneManager.LoadScene(changedtoScene);
-        
+
     }
 }
