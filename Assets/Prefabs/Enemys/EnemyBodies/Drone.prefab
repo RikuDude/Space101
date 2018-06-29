@@ -75,7 +75,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+  score: 10
 --- !u!114 &114529350994212248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,7 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   droneProjectile: {fileID: 1527623109815400, guid: c7e7137d3777b63458464ca776d2d3ea,
     type: 2}
-  fireRate: 5
+  playerBoundary: {fileID: 0}
+  fireRate: 2.5
 --- !u!114 &114886640140296192
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -11,17 +11,12 @@ public class ImpactWithPlayer : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("Player"))
-        {
-            PlayerTarget target = collision.collider.transform.GetComponent<PlayerTarget>();
+        damageAndPushPlayer(collision.collider);
+    }
 
-            if(target != null)
-            {
-                target.TakeDamage(impactDamage);
-                // pushing the player away from the asteroid
-                collision.collider.transform.GetComponent<Rigidbody2D>().AddForce(calculateNormalizedCollisionVector(collision.collider.transform) * impactForce);
-            }
-        }   
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        damageAndPushPlayer(collider);
     }
 
     private Vector2 calculateNormalizedCollisionVector(Transform colliderTransform)
@@ -32,6 +27,21 @@ public class ImpactWithPlayer : MonoBehaviour {
         return normalizedCollisionVector;
 
     }
-    
+
+
+    private void damageAndPushPlayer(Collider2D collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            PlayerTarget target = collider.transform.GetComponent<PlayerTarget>();
+
+            if (target != null)
+            {
+                target.TakeDamage(impactDamage);
+                // pushing the player away from the enemy
+                collider.transform.GetComponent<Rigidbody2D>().AddForce(calculateNormalizedCollisionVector(collider.transform) * impactForce);
+            }
+        }
+    }
 
 }

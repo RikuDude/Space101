@@ -13,10 +13,10 @@ public class DroneAttack : MonoBehaviour {
 
 
     private float timeUntilAquieringNextTarget = 5f;
-    private float nextTimeToAquireNextTarget = 0;
+    private float nextTimeToAquireNextTarget = 0f;
 
     public float fireRate = 3f;
-    private float nextTimeToFire = 0;
+    private float nextTimeToFire = 0f;
 
     void Start () {
         playerBoundary = GameObject.Find("PlayerBoundary").transform;
@@ -62,7 +62,11 @@ public class DroneAttack : MonoBehaviour {
 
     private void ShootAtTargetPlayer()
     {
-        Instantiate(droneProjectile, transform.position, rotateProjectileTowardsTarget(targetPlayer.transform.position));
+        if(targetPlayer != null)
+        {
+            Instantiate(droneProjectile, transform.position, rotateProjectileTowardsTarget(targetPlayer.transform.position));
+        }
+        
     }
 
     private Quaternion rotateProjectileTowardsTarget(Vector2 targetPosition)

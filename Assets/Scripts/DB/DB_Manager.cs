@@ -54,7 +54,7 @@ public class DB_Manager : MonoBehaviour
                 dbConnection.Open();
                 using (IDbCommand dbCmd = dbConnection.CreateCommand())
                 {
-                    string sqlQuery = String.Format("Insert INTO space_users(name,best_score,total_points) VALUES(\"{0}\",\"{1}\")", name, score);
+                    string sqlQuery = String.Format("Insert INTO space_users(name,best_score) VALUES(\"{0}\",\"{1}\")", name, score);
                     dbCmd.CommandText = sqlQuery;
                     dbCmd.ExecuteScalar();
                     dbCmd.Connection.Close();

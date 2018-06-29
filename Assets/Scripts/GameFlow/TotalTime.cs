@@ -12,6 +12,9 @@ public class TotalTime : MonoBehaviour {
 	}
 	
 	void Update () {
-        totalTimeBoard.text = "" + (int)(Time.time % 6000);
-	}
+        int minutes = (int)(Time.time / 60);
+        int seconds = (int)(Time.time % 60);
+        int milliseconds = (int)(Time.timeSinceLevelLoad * 100f) % 100;
+        totalTimeBoard.text = "" + minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + milliseconds.ToString("D2");
+    }
 }

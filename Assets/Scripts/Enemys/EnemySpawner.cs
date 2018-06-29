@@ -35,6 +35,8 @@ public class EnemySpawner : MonoBehaviour {
             nextTimeToSpawnWave = Time.time + timeBetweenWaves;
         }
 
+        updateNextWaveClock();
+
 	}
 
 
@@ -79,6 +81,6 @@ public class EnemySpawner : MonoBehaviour {
 
     private void updateNextWaveClock()
     {
-
+        nextWaveClockBoard.text = "NextWave: " + ((int)nextTimeToSpawnWave - (int)(Time.time % 6000));
     }
 }
