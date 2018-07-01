@@ -14,12 +14,13 @@ public class DB_Manager : MonoBehaviour
     private string connectString;
 
 
+
     // Use this for initialization
     void Start()
     {
 
         connectString = "URI=file:" + Application.dataPath + "/spaceDB.sqlite";
-
+        User.NewUser = false;
     }
 
     // Update is called once per frame
@@ -39,13 +40,15 @@ public class DB_Manager : MonoBehaviour
         }
         else
         {
-            InsertUser(userName.text, 0);
+            InsertUser(userName.text.ToString(), 0);
             SceneManager.LoadScene("Player_Game_Info");
         }
 
     }
     private void InsertUser(string name, int score = 0)
     {
+        //UserExist(name);
+
         if (!UserExist(name))
         {
 
@@ -58,6 +61,7 @@ public class DB_Manager : MonoBehaviour
                     dbCmd.CommandText = sqlQuery;
                     dbCmd.ExecuteScalar();
                     dbCmd.Connection.Close();
+                    User.SetUserData(name, true);
                 }
             }
         }
@@ -65,81 +69,61 @@ public class DB_Manager : MonoBehaviour
 
     private bool UserExist(string name)
     {
+        bool userExist = false;
         try
         {
+            //connectString = "URI=file:" + Application.dataPath + "/spaceDB.sqlite";
             using (IDbConnection dbConnection = new SqliteConnection(connectString))
             {
                 dbConnection.Open();
+
                 using (IDbCommand dbCmd = dbConnection.CreateCommand())
                 {
+
                     string sqlQuery = String.Format("SELECT * FROM space_users WHERE name = \"{0}\"", name);
                     dbCmd.CommandText = sqlQuery;
                     using (IDataReader reader = dbCmd.ExecuteReader())
                     {
-                        while (reader.Read())
+                        Debug.Log(reader.Read().ToString());
+                        //reader.Read();
+                        if ((reader.GetString(0) == name))
                         {
-                            if (reader.GetString(1) != "")
-                            {
-                                User.SetUserData(reader.GetString(0), false, reader.GetString(1), reader.GetString(2));
-                                return true;
-                            }
+                            User.SetUserData(reader.GetString(0), false, reader.GetInt32(1).ToString());
+                            userExist = true;
+                           
+                            Debug.Log("user:  " + User.UserName);
+
                         }
-
                         reader.Close();
-                        dbConnection.Close();
-
                     }
+
+
+
+
                 }
 
-                User.SetUserData(name, true);
-                return false;
+                dbConnection.Close();
+
+                if (userExist == false)
+                {
+                    User.SetUserData(name, true);
+
+                }
+
             }
+         
+            return userExist;
         }
         catch (Exception)
         {
             Text nameBox = GameObject.Find("ErrorText").GetComponent<Text>();
             nameBox.text = "DB doesn't exist!! ";
+
             return false;
         }
 
     }
 
 
-    //public void FillListView(Text Listtxt)
-    //{
-    //    GetScores();
-    //    foreach (var item in bestScores)
-    //    {
-    //        Listtxt.text += item.ToString() + "\n";
-    //    }
-    //}
-    //public List<string>  GetScores()
-    //{       string connectString = "URI=file:" + Application.dataPath + "/spaceDB.sqlite";
 
-    //         bestScores.Clear();
-
-    //    using (IDbConnection dbConnection = new SqliteConnection(connectString))
-    //    {
-    //        dbConnection.Open();
-
-    //        using (IDbCommand dbCmd = dbConnection.CreateCommand())
-    //        {
-    //            string sqlQuery = "SELECT * FROM space_users ORDER BY best_score DESC";
-    //            dbCmd.CommandText = sqlQuery;
-    //            using (IDataReader reader = dbCmd.ExecuteReader())
-    //            {
-    //                while (reader.Read())
-    //                {
-
-    //                    bestScores.Add(reader.GetString(0) + "  " + reader.GetString(1));
-    //                    //Debug.Log(reader.GetString(0) + " " + reader.GetString(1));
-    //                }
-
-    //                dbConnection.Close();
-    //                reader.Close();
-    //                return bestScores;
-    //            }
-    //        }
-    //    }
-    //}
 }
