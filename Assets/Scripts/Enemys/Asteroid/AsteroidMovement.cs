@@ -15,7 +15,7 @@ public class AsteroidMovement : MonoBehaviour {
         targetBoundaryHolder = GameObject.Find("TargetBoundary").transform;
 
         myRigidbody = this.GetComponent<Rigidbody2D>();
-        Vector2 targetPosition = new Vector2(Random.Range( targetBoundaryHolder.GetChild(1).position.y, targetBoundaryHolder.GetChild(0).position.y), Random.Range(targetBoundaryHolder.GetChild(2).position.x, targetBoundaryHolder.GetChild(3).position.x));
+        Vector2 targetPosition = new Vector2(Random.Range( targetBoundaryHolder.GetChild(2).position.x, targetBoundaryHolder.GetChild(3).position.x), Random.Range(targetBoundaryHolder.GetChild(0).position.y, targetBoundaryHolder.GetChild(1).position.y));
 
         Vector2 forceDirection = targetPosition - new Vector2(this.transform.position.x, this.transform.position.y);
 

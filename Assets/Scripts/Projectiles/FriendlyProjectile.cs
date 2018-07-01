@@ -13,7 +13,7 @@ public class FriendlyProjectile : MonoBehaviour {
     {
 
         
-        if(!collision.CompareTag("Player") && !collision.CompareTag("Projectile"))
+        if(!collision.CompareTag("Player") && !collision.CompareTag("Projectile") && !collision.CompareTag("Powerup"))
         {
             
             Target target = collision.transform.GetComponent<Target>();

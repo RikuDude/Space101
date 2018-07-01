@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
 
     private float nextTimeToFire = 0f;
 
+    public float dashCoolDown = 1;
+    private float nextTimeToDash = 0f;
+    public float dashForce = 2f;
+
 
     public float playerSpeed;
     protected Rigidbody2D myBody;
@@ -25,11 +29,12 @@ public class PlayerController : MonoBehaviour
     protected float rx = 0;
     protected float ry = 0;
 
+    Vector2 shipMovement;
+
     public Transform BoundaryHolder;
 
     Boundary playerBoundary;
 
-    // Use this for initialization
     void Start()
     {
         
@@ -45,16 +50,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
-   
-
-    // Update is called once per frame
     void Update()
     {
-
         playerBullet.GetComponent<PlayerBullet>().setSpeed(speed: bulletSpeed);
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
+
+         shipMovement = new Vector2(x, y);
 
         transform.Translate(x * Time.deltaTime * playerSpeed, y * Time.deltaTime * playerSpeed, 0, Space.World);
 
@@ -63,6 +66,12 @@ public class PlayerController : MonoBehaviour
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             shootBullet();
+        }
+
+        if (Input.GetAxis("L1") == 1 && Time.time >= nextTimeToDash)
+        {
+            nextTimeToDash = Time.time + dashCoolDown;
+            performDash(shipMovement);
         }
 
 
@@ -106,6 +115,11 @@ public class PlayerController : MonoBehaviour
         bullet.transform.GetComponent<FriendlyProjectile>().setShootingPlayer(this.gameObject);
     }
 
+    private void performDash(Vector2 shipMovement)
+    {
+
+        myBody.AddForce(shipMovement.normalized * dashForce);
+    }
 
     public void addScore(float amount)
     {
@@ -119,7 +133,18 @@ public class PlayerController : MonoBehaviour
 
     public void updateScoreBoard()
     {
-        this.scoreBoard.text = "" + this.score;
+        this.scoreBoard.text = "Score: " + this.score;
+    }
+
+    public Vector2 getPredictedPosition()
+    {
+        Vector2 predictedPosition = new Vector2 (this.transform.position.x, this.transform.position.y) + shipMovement;
+        return predictedPosition;
+    }
+
+    public Vector2 getShipMovement()
+    {
+        return shipMovement.normalized;
     }
 
     struct Boundary
@@ -134,8 +159,5 @@ public class PlayerController : MonoBehaviour
             this.right = right;
         }
     }
-
     
-
-
 }

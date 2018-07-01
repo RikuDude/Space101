@@ -117,6 +117,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 30
   score: 10
+  chanceOfSpawningHealthInPercent: 10
+  healthPowerup: {fileID: 1276078419544896, guid: 25c4c288142c65440978dbf4ba1e80c1,
+    type: 2}
 --- !u!114 &114529350994212248
 MonoBehaviour:
   m_ObjectHideFlags: 1

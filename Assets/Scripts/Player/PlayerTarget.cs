@@ -7,8 +7,8 @@ public class PlayerTarget : MonoBehaviour {
     
     private Image ImgHealthBar;
 
-    private float maxHealth = 50f;
-    private float currentHealth = 50f;
+    public float maxHealth = 100f;
+    public float currentHealth = 100f;
 
     private void Start()
     {
@@ -32,15 +32,15 @@ public class PlayerTarget : MonoBehaviour {
         {
             currentHealth = maxHealth;
         }
-
         updateHealthBar();
-
     }
 
     private void Die()
     {
-        Debug.Log("Username: " + User.UserName);
+        User.UserName = GameObject.Find("Name_Box").transform.GetChild(0).GetComponent<Text>().text;
+        Debug.Log("Saved Username: " + User.UserName);
         User.Score = "" + this.gameObject.transform.GetComponent<PlayerController>().getScore();
+        Debug.Log("Saved Score: " + User.Score);
         Destroy(this.gameObject);
     }
 

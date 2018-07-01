@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneProjectile : MonoBehaviour {
+public class SharpShooterProjectile : MonoBehaviour {
 
-    public float damage = 5f;
+    public float damage = 10f;
 
-    public float speed;
+    public float speed = 10f;
     Rigidbody2D myRigidbody;
-    
-        void Start()
+
+    void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
     }
-    
+
     void Update()
     {
         myRigidbody.velocity = transform.TransformDirection(new Vector2(0f, 1f) * speed);
@@ -21,7 +21,7 @@ public class DroneProjectile : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
 
         if (!collision.CompareTag("Enemy") && !collision.CompareTag("Projectile") && !collision.CompareTag("Powerup"))
         {
@@ -32,12 +32,9 @@ public class DroneProjectile : MonoBehaviour {
             {
                 target.TakeDamage(damage);
             }
-            
+
             Destroy(this.gameObject);
         }
-        
+
     }
-
-    
-
 }

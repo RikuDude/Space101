@@ -5,8 +5,10 @@ using UnityEngine;
 public class Target : MonoBehaviour {
 
     public float health = 50f;
-
     public float score = 10f;
+    public int chanceOfSpawningHealthInPercent = 10;
+
+    public GameObject healthPowerup;
 
     public void TakeDamage (float amount, GameObject friendlyProjectile)
     {
@@ -27,6 +29,13 @@ public class Target : MonoBehaviour {
 
     private void Die()
     {
+        if (Random.Range(0, 100) <= chanceOfSpawningHealthInPercent)
+        {
+            Instantiate(healthPowerup, this.transform.position, new Quaternion());
+            Debug.Log("Spawned health!");
+        }
+        
+
         Destroy(this.gameObject);
     }
 
