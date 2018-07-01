@@ -40,7 +40,7 @@ public class SetTopScores : MonoBehaviour
                         tempTextObjekt = Convert.ToString(objectText + i.ToString());
 
                         nameBox = GameObject.Find(tempTextObjekt).GetComponent<Text>();
-                        nameBox.text = Convert.ToString(reader.GetString(0) + "  " + reader.GetString(1));
+                        nameBox.text = Convert.ToString(reader.GetString(0) + "  " + reader.GetInt32(1));
                         tempTextObjekt = "";
                         Debug.Log(tempTextObjekt);
                         i++;
