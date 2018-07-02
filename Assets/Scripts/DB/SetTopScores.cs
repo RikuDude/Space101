@@ -35,7 +35,7 @@ public class SetTopScores : MonoBehaviour
                 using (IDataReader reader = dbCmd.ExecuteReader())
                 {
                     int i = 1;
-                    while ((reader.Read()) && (i < 6))
+                    while ((reader.Read()))
                     {
                         tempTextObjekt = Convert.ToString(objectText + i.ToString());
 
