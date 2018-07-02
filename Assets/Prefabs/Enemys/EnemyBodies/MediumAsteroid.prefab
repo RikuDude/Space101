@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114273308449932790}
   - component: {fileID: 114320456319773282}
   - component: {fileID: 114622346639339028}
+  - component: {fileID: 114686992131022730}
   m_Layer: 0
   m_Name: MediumAsteroid
   m_TagString: Enemy
@@ -121,6 +122,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactDamage: 10
   impactForce: 750
+--- !u!114 &114686992131022730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632446683922490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d46d44c4b31bfd48b11c71a77ab1f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 1
 --- !u!212 &212076023977765748
 SpriteRenderer:
   m_ObjectHideFlags: 1

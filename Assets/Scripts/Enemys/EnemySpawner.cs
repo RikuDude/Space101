@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour {
 
+    private int gameDifficulty;
+
     public float waveDifficulty = 2;
     public float timeBetweenWaves = 30;
 
@@ -19,7 +21,23 @@ public class EnemySpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         nextWaveClockBoard = GameObject.Find("Clock").transform.GetChild(1).transform.GetChild(0).transform.GetComponent<Text>();
-	}
+        gameDifficulty = User.Difficulty;
+
+        switch (gameDifficulty)
+        {
+            case 0:
+
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            default:
+                break;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -31,6 +49,8 @@ public class EnemySpawner : MonoBehaviour {
 
         if(Time.time >= nextTimeToSpawnWave)
         {
+           
+           
             SpawnWave();
             nextTimeToSpawnWave = Time.time + timeBetweenWaves;
         }
@@ -43,14 +63,44 @@ public class EnemySpawner : MonoBehaviour {
     private void SpawnWave()
     {
 
-        for (int i = 0; i < waveDifficulty; i++)
+        for (int i = (int)waveDifficulty; i > 0;)
         {
             Vector2 randomizedSpawnPoint = generateRandomizedSpawnPoint();
-            Instantiate(this.listOfAllEnemyTypes[Random.Range(0, listOfAllEnemyTypes.Count)], new Vector3(randomizedSpawnPoint.x, randomizedSpawnPoint.y, 0), new Quaternion(0f, 0f, 0f, 0f));
+
+            GameObject spawnedEnemy;
+
+            if (i >= 5)
+            {
+                spawnedEnemy = this.listOfAllEnemyTypes[Random.Range(0, listOfAllEnemyTypes.Count)];
+            } else if (i >= 3)
+            {
+                spawnedEnemy = this.listOfAllEnemyTypes[Random.Range(0, listOfAllEnemyTypes.Count) - 1];
+            } else
+            {
+                spawnedEnemy = this.listOfAllEnemyTypes[0];
+            }
+            
+            Instantiate(spawnedEnemy, new Vector3(randomizedSpawnPoint.x, randomizedSpawnPoint.y, 0), new Quaternion(0f, 0f, 0f, 0f));
+
+            i -= spawnedEnemy.transform.GetComponent<Difficulty>().getDifficulty();
         }
 
-        waveDifficulty = waveDifficulty + 2;
-        
+        if(gameDifficulty == 0)
+        {
+            waveDifficulty = waveDifficulty + 2;
+        }
+        else if (gameDifficulty == 1)
+        {
+            waveDifficulty = waveDifficulty * 2;
+        }
+        else if (gameDifficulty == 2)
+        {
+            waveDifficulty = waveDifficulty * waveDifficulty;
+        }
+        else
+        {
+            waveDifficulty = waveDifficulty + 2;
+        }
     }
 
 

@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114015496282219388}
   - component: {fileID: 114886640140296192}
   - component: {fileID: 114529350994212248}
+  - component: {fileID: 114560180618872386}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Enemy
@@ -134,7 +135,19 @@ MonoBehaviour:
   droneProjectile: {fileID: 1527623109815400, guid: c7e7137d3777b63458464ca776d2d3ea,
     type: 2}
   playerBoundary: {fileID: 0}
-  fireRate: 2.5
+  fireRate: 1.75
+--- !u!114 &114560180618872386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403729929244362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d46d44c4b31bfd48b11c71a77ab1f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 3
 --- !u!114 &114886640140296192
 MonoBehaviour:
   m_ObjectHideFlags: 1

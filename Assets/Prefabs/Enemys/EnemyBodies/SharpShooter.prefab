@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 114950888440251162}
   - component: {fileID: 114696376481795836}
   - component: {fileID: 114961424798851584}
+  - component: {fileID: 114232029360290864}
+  - component: {fileID: 114429313985122010}
   m_Layer: 0
   m_Name: SharpShooter
   m_TagString: Enemy
@@ -80,6 +82,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.31}
   serializedVersion: 2
   m_Radius: 1.59
+--- !u!114 &114232029360290864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1619807651353894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d46d44c4b31bfd48b11c71a77ab1f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 5
+--- !u!114 &114429313985122010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1619807651353894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647889851784c654dba32de19012bb5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactDamage: 20
+  impactForce: 1500
 --- !u!114 &114696376481795836
 MonoBehaviour:
   m_ObjectHideFlags: 1
